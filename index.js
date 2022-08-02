@@ -41,12 +41,11 @@ const characters = require('./swapi');
  *
  */
 
-function listAllCharacters() {
+function listAllCharacters(characters) {
   if (!characters.length) {
-    throw `Empty array, try again.`
+    throw `Error`
   }
-  const name = characters.map(({ name }) => name)
-  return name
+  return characters.map((character) => character.name)
 }
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
@@ -67,7 +66,7 @@ function listAllCharacters() {
  * No example for this one. You should be able to find the average at this point
  */
 
-function averageHeightOfAllCharacters() {
+function averageHeightOfAllCharacters(characters) {
   let sum = 0
   characters.forEach(({height}) => sum += (+height) )
   return sum / characters.length
@@ -108,7 +107,12 @@ function averageHeightOfAllCharacters() {
  *
  */
 
-function checkForEyeColor() {}
+function checkForEyeColor(characters, eyes) {
+  if (!characters.length){
+    throw `Error: No one has that eye color`
+  }
+  return characters.some((character) => character.eye_color === eyes)
+}
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(checkForEyeColor([]));
